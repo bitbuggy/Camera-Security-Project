@@ -18,7 +18,6 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((IP, PORT))
 server.listen(True)
 
-
 image = cv2.VideoCapture(0)
 
 encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
@@ -35,9 +34,6 @@ while True:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         cv2.imwrite('person_identificated.jpg', frame)
 
-
-    # cv2.imshow('Video', imagem) # mostra a imagem capturada na janela
-
     result, imgencode = cv2.imencode('.jpg', frame, encode_param)
     data  = numpy.array(imgencode)
     string_data = data.tostring()
@@ -46,7 +42,6 @@ while True:
     ret, frame = image.read()
 
 image.release()
-
 server.close()
 
 
